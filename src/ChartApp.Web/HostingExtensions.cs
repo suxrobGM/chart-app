@@ -21,8 +21,7 @@ internal static class HostingExtensions
         app.UseRouting();
 
         app.UseAuthorization();
-
-        app.MapControllers();
+        app.MapRazorPages();
         return app;
     }
 }

@@ -8,3 +8,24 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<div>
+    <canvas id="chartCanvas"></canvas>
+</div>
+
+@section Scripts {
+    <script src="~/js/chart.js"></script>
+    <script type="text/javascript">
+        const canvas = document.getElementById("chartCanvas");
+        canvas.width = 300;
+        canvas.height = 300;
+
+        let pieChart = new PieChart(canvas, {
+                    "test1": 4,
+                    "test2": 5,
+                    "test3": 9
+        });
+
+        pieChart.draw();
+    </script>
+}
