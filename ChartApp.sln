@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32505.426
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChartApp.Web", "src\ChartApp.Web\ChartApp.Web.csproj", "{5AC170C4-F492-472A-B593-3A6293AAFD28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChartApp.Api", "src\ChartApp.Api\ChartApp.Api.csproj", "{A9BBA6FA-3108-4F27-85BF-EA028E5E7CB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChartApp.Application", "src\ChartApp.Application\ChartApp.Application.csproj", "{88CA22A0-7492-4807-904D-BF0229D122C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChartApp.Application.Contracts", "src\ChartApp.Application.Contracts\ChartApp.Application.Contracts.csproj", "{2AC7A503-B08B-4AFE-ADF6-B2AFE30CBC95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChartApp.Domain", "src\ChartApp.Domain\ChartApp.Domain.csproj", "{B2DC4233-7BEE-48F8-805E-D9480703A890}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{5636720E-7BED-41E3-9EA5-AA505410336B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{C8157AE8-EF23-42C8-8B39-34ED10ECDB27}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5AC170C4-F492-472A-B593-3A6293AAFD28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AC170C4-F492-472A-B593-3A6293AAFD28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AC170C4-F492-472A-B593-3A6293AAFD28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AC170C4-F492-472A-B593-3A6293AAFD28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9BBA6FA-3108-4F27-85BF-EA028E5E7CB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9BBA6FA-3108-4F27-85BF-EA028E5E7CB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9BBA6FA-3108-4F27-85BF-EA028E5E7CB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9BBA6FA-3108-4F27-85BF-EA028E5E7CB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88CA22A0-7492-4807-904D-BF0229D122C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88CA22A0-7492-4807-904D-BF0229D122C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88CA22A0-7492-4807-904D-BF0229D122C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88CA22A0-7492-4807-904D-BF0229D122C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AC7A503-B08B-4AFE-ADF6-B2AFE30CBC95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AC7A503-B08B-4AFE-ADF6-B2AFE30CBC95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AC7A503-B08B-4AFE-ADF6-B2AFE30CBC95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AC7A503-B08B-4AFE-ADF6-B2AFE30CBC95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2DC4233-7BEE-48F8-805E-D9480703A890}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2DC4233-7BEE-48F8-805E-D9480703A890}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2DC4233-7BEE-48F8-805E-D9480703A890}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2DC4233-7BEE-48F8-805E-D9480703A890}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5AC170C4-F492-472A-B593-3A6293AAFD28} = {5636720E-7BED-41E3-9EA5-AA505410336B}
+		{A9BBA6FA-3108-4F27-85BF-EA028E5E7CB9} = {5636720E-7BED-41E3-9EA5-AA505410336B}
+		{88CA22A0-7492-4807-904D-BF0229D122C1} = {C8157AE8-EF23-42C8-8B39-34ED10ECDB27}
+		{2AC7A503-B08B-4AFE-ADF6-B2AFE30CBC95} = {C8157AE8-EF23-42C8-8B39-34ED10ECDB27}
+		{B2DC4233-7BEE-48F8-805E-D9480703A890} = {C8157AE8-EF23-42C8-8B39-34ED10ECDB27}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {59129841-3877-4C86-8E0F-83C9C0D30D8C}
+	EndGlobalSection
+EndGlobal
