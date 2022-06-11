@@ -17,15 +17,70 @@
     <script src="~/js/chart.js"></script>
     <script type="text/javascript">
         const canvas = document.getElementById("chartCanvas");
-        canvas.width = 300;
-        canvas.height = 300;
+        canvas.width = 500;
+        canvas.height = 500;
 
-        let pieChart = new PieChart(canvas, {
-                    "test1": 4,
-                    "test2": 5,
-                    "test3": 9
-        });
+        const pieChart = new PieChart(canvas, [
+            {
+                category: "test1",
+                value: 4
+            },
+            {
+                category: "test2",
+                value: 5
+            },
+            {
+                category: "test3",
+                value: 9
+            }
+        ]);
 
-        pieChart.draw();
+        const lineChart = new LineChart(canvas, [
+            {
+                category: "test1",
+                points: [
+                    {
+                        x: 1,
+                        y: 2
+                    },
+                    {
+                        x: 2,
+                        y: 3
+                    },
+                    {
+                        x: 3,
+                        y: 4
+                    },
+                    {
+                        x: 4,
+                        y: 5
+                    }
+                ]
+            },
+            {
+                category: "test2",
+                pints: [
+                    {
+                        x: 0,
+                        y: 2
+                    },
+                    {
+                        x: 5,
+                        y: 6
+                    },
+                    {
+                        x: 7,
+                        y: 7
+                    },
+                    {
+                        x: 9,
+                        y: 10
+                    }
+                ]
+            }
+        ]);
+
+        //pieChart.draw();
+        lineChart.draw();
     </script>
 }

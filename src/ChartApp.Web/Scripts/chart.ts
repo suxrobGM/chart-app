@@ -19,9 +19,9 @@
 }
 
 class PieChart extends Chart {
-    private readonly _data: Map<string, number>;
+    private readonly _data: PieChartData[];
 
-    constructor(canvasElement: HTMLCanvasElement, data: Map<string, number>) {
+    constructor(canvasElement: HTMLCanvasElement, data: PieChartData[]) {
         super(canvasElement);
         this._data = data;
     }
@@ -29,16 +29,15 @@ class PieChart extends Chart {
     public draw() {
         let totalValue = 0;
 
-        for (var categ in this._data) {
-            const val = this._data[categ];
-            totalValue += val;
-        }
+        this._data.forEach(i => {
+            totalValue += i.value;
+        });
 
         let startAngle = 0;
         let colorIndex = 1;
 
-        for (categ in this._data) {
-            const val = this._data[categ];
+        for (const data of this._data) {
+            const val = data.value;
             const sliceAngle = 2 * Math.PI * val / totalValue;
             const endAngle = startAngle + sliceAngle;
             const color = this.randomColor(colorIndex);
@@ -73,17 +72,135 @@ class PieChart extends Chart {
         this.ctx.closePath();
         this.ctx.fill();
     }
+}
 
-    //private drawLine(startX: number, startY: number, endX: number, endY: number) {
-    //    this.ctx.beginPath();
-    //    this.ctx.moveTo(startX, startY);
-    //    this.ctx.lineTo(endX, endY);
-    //    this.ctx.stroke();
-    //}
+class LineChart extends Chart {
+    private readonly _data: LineChartData[];
+    private readonly _padding: number;
+    private readonly _pointRadius: number;
+    private _maxX: number;
+    private _minX: number;
+    private _maxY: number;
+    private _minY: number;
 
-    //private drawArc(centerX: number, centerY: number, radius: number, startAngle: number, endAngle: number) {
-    //    this.ctx.beginPath();
-    //    this.ctx.arc(centerX, centerY, radius, startAngle, endAngle);
-    //    this.ctx.stroke();
-    //}
+    constructor(canvasElement: HTMLCanvasElement, data: LineChartData[]) {
+        super(canvasElement);
+        this._data = data;
+        this._maxX = 0;
+        this._minX = 0;
+        this._maxY = 0;
+        this._minY = 0;
+        this._padding = 10;
+        this._pointRadius = 5;
+    }
+
+    public draw() {
+        this.drawX();
+        this.drawY();
+        //this._data.forEach(i => {
+        //    this.drawCategory(i);
+        //});
+    }
+
+    private drawCategory(data: LineChartData) {
+        const xValues = this.getValuesX(data.points);
+        const yValues = this.getValuesY(data.points);
+        const maxX = this.getMax(xValues);
+        const minX = this.getMin(xValues);
+        const maxY = this.getMax(yValues);
+        const minY = this.getMin(yValues);
+
+        if (maxX > this._maxX) {
+            this._maxX = maxX;
+        }
+        if (minX < this._minX) {
+            this._minX = minX;
+        }
+        if (maxY > this._maxY) {
+            this._maxY = maxY;
+        }
+        if (minY < this._minY) {
+            this._minY = minY;
+        }
+    }
+
+    private drawX() {
+        const width = this.canvas.width;
+        const height = this.canvas.height;
+        this.drawLine(0, height, width, height, 2);
+    }
+
+    private drawY() {
+        const width = this.canvas.width;
+        const height = this.canvas.height;
+        this.drawLine(0, height, 0, 0, 2);
+    }
+
+    private drawLine(startX: number, startY: number, endX: number, endY: number, lineWidth = 1) {
+        this.ctx.beginPath();
+        this.ctx.moveTo(startX, startY);
+        this.ctx.lineTo(endX, endY);
+        this.ctx.lineWidth = lineWidth;
+        this.ctx.stroke();
+    }
+
+    private getMax(values: number[]): number {
+        let max = values[0];
+
+        values.forEach(i => {
+            if (i > max) {
+                max = i;
+            }
+        });
+
+        return max;
+    }
+
+    private getMin(values: number[]): number {
+        let min = values[0];
+
+        values.forEach(i => {
+            if (i < min) {
+                min = i;
+            }
+        });
+
+        return min;
+    }
+
+    private getValuesX(values: Point[]): number[] {
+        const xValues = new Array<number>();
+        values.forEach(i => {
+            xValues.push(i.x);
+        });
+        return xValues;
+    }
+
+    private getValuesY(values: Point[]): number[] {
+        const yValues = new Array<number>();
+        values.forEach(i => {
+            yValues.push(i.y);
+        });
+        return yValues;
+    }
+
+    private getUnitValue(maxValue: number, minValue: number) {
+        const range = maxValue - minValue;
+
+    }
+}
+
+type PieChartData = {
+    category: string;
+    value: number;
+}
+
+type LineChartData = {
+    category: string;
+    points: Point[];
+}
+
+type Point = {
+    x: number;
+    y: number;
 }

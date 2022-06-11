@@ -56,4 +56,90 @@ class PieChart extends Chart {
         this.ctx.fill();
     }
 }
+class LineChart extends Chart {
+    constructor(canvasElement, data) {
+        super(canvasElement);
+        this._data = data;
+        this._maxX = 0;
+        this._minX = 0;
+        this._maxY = 0;
+        this._minY = 0;
+    }
+    draw() {
+        this.drawX();
+        this.drawY();
+        //this._data.forEach(i => {
+        //    this.drawCategory(i);
+        //});
+    }
+    drawCategory(data) {
+        const xValues = this.getValuesX(data.points);
+        const yValues = this.getValuesY(data.points);
+        const maxX = this.getMax(xValues);
+        const minX = this.getMin(xValues);
+        const maxY = this.getMax(yValues);
+        const minY = this.getMin(yValues);
+        if (maxX > this._maxX) {
+            this._maxX = maxX;
+        }
+        if (minX < this._minX) {
+            this._minX = minX;
+        }
+        if (maxY > this._maxY) {
+            this._maxY = maxY;
+        }
+        if (minY < this._minY) {
+            this._minY = minY;
+        }
+    }
+    drawX() {
+        const width = this.canvas.width;
+        const height = this.canvas.height;
+        this.drawLine(0, height, width, height, 2);
+    }
+    drawY() {
+        const width = this.canvas.width;
+        const height = this.canvas.height;
+        this.drawLine(0, height, 0, 0, 2);
+    }
+    drawLine(startX, startY, endX, endY, lineWidth = 1) {
+        this.ctx.beginPath();
+        this.ctx.moveTo(startX, startY);
+        this.ctx.lineTo(endX, endY);
+        this.ctx.lineWidth = lineWidth;
+        this.ctx.stroke();
+    }
+    getMax(values) {
+        let max = values[0];
+        values.forEach(i => {
+            if (i > max) {
+                max = i;
+            }
+        });
+        return max;
+    }
+    getMin(values) {
+        let min = values[0];
+        values.forEach(i => {
+            if (i < min) {
+                min = i;
+            }
+        });
+        return min;
+    }
+    getValuesX(values) {
+        const xValues = new Array();
+        values.forEach(i => {
+            xValues.push(i.x);
+        });
+        return xValues;
+    }
+    getValuesY(values) {
+        const yValues = new Array();
+        values.forEach(i => {
+            yValues.push(i.y);
+        });
+        return yValues;
+    }
+}
 //# sourceMappingURL=chart.js.map
